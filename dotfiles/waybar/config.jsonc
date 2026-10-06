@@ -7,7 +7,7 @@
     "margin-right": 10,
     "spacing": 4,
 
-    "modules-left":   ["custom/launcher", "hyprland/workspaces"],
+    "modules-left":   ["custom/launcher", "ext/workspaces"],
     "modules-center": ["clock"],
     "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "custom/notification"],
 
@@ -16,10 +16,9 @@
         "tooltip": false,
         "on-click": "fuzzel"
     },
-    "hyprland/workspaces": {
-        "format": "{id}",
-        "on-click": "activate",
-        "persistent-workspaces": { "*": 5 }
+    "ext/workspaces": {
+        "format": "{name}",
+        "on-click": "activate"
     },
     "clock": {
         "format": "\uf017  {:L%a %d %b   %H:%M}",
