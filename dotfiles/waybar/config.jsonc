@@ -1,0 +1,56 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "margin-top": 6,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 4,
+
+    "modules-left":   ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "custom/notification"],
+
+    "custom/launcher": {
+        "format": "\uf303",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "persistent-workspaces": { "*": 5 }
+    },
+    "clock": {
+        "format": "\uf017  {:L%a %d %b   %H:%M}",
+        "locale": "es_PY.utf8",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "tray": { "spacing": 8 },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "\uf026  mudo",
+        "format-icons": { "default": ["\uf026", "\uf027", "\uf028"] },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "network": {
+        "format-ethernet": "\uf0e8  {ipaddr}",
+        "format-wifi": "\uf1eb  {essid}",
+        "format-disconnected": "\uf127  sin red",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+    "cpu":    { "format": "\uf2db  {usage}%", "interval": 3 },
+    "memory": { "format": "\uf1c0  {percentage}%", "interval": 5 },
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "\uf0f3", "none": "\uf0a2",
+            "dnd-notification": "\uf1f6", "dnd-none": "\uf1f6"
+        },
+        "return-type": "json",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
+    }
+}
