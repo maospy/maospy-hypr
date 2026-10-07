@@ -17,6 +17,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("sleep 1 && waypaper --restore")
     hl.exec_cmd("nwg-dock-hyprland -r -x -i 40 -mb 8 -c fuzzel")
+    hl.exec_cmd("hypridle")
 end)
 
 ---- VARIABLES ----
