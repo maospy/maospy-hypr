@@ -22,6 +22,7 @@ end)
 ---- VARIABLES ----
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 ---- APARIENCIA (Nord, liviano) ----
 hl.config({
@@ -116,3 +117,13 @@ hl.window_rule({
     match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false },
     no_focus = true,
 })
+
+-- Mezclador de audio flotante
+hl.window_rule({
+    name  = "pavucontrol-float",
+    match = { class = "org.pulseaudio.pavucontrol" },
+    float = true,
+})
+
+-- Menu de energia
+hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-power"))

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+op=$(printf "\uf023  Bloquear\n\uf2f5  Cerrar sesión\n\uf186  Suspender\n\uf01e  Reiniciar\n\uf011  Apagar\n" | fuzzel --dmenu --prompt "Energía > " --lines 5 --width 24)
+case "$op" in
+    *Bloquear*)  hyprlock ;;
+    *Cerrar*)    command -v hyprshutdown >/dev/null && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()' ;;
+    *Suspender*) hyprlock & sleep 1; systemctl suspend ;;
+    *Reiniciar*) systemctl reboot ;;
+    *Apagar*)    systemctl poweroff ;;
+esac

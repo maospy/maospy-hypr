@@ -46,3 +46,11 @@ window#waybar {
     background: #434c5e;
     color: #eceff4;
 }
+
+#custom-power {
+    background: #3b4252;
+    color: #bf616a;
+    padding: 0 12px;
+    margin: 4px 4px 4px 2px;
+    border-radius: 7px;
+}

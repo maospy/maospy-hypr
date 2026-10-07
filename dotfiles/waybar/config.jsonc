@@ -9,8 +9,13 @@
 
     "modules-left":   ["custom/launcher", "ext/workspaces"],
     "modules-center": ["clock"],
-    "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "custom/notification"],
+    "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "custom/notification", "custom/power"],
 
+    "custom/power": {
+        "format": "\uf011",
+        "tooltip": false,
+        "on-click": "~/.local/bin/maospy-power"
+    },
     "custom/launcher": {
         "format": "\uf303",
         "tooltip": false,
@@ -27,10 +32,13 @@
     },
     "tray": { "spacing": 8 },
     "pulseaudio": {
-        "format": "{icon}  {volume}%",
+        "format": "{icon}",
+        "tooltip-format": "Volumen: {volume}%",
         "format-muted": "\uf026  mudo",
         "format-icons": { "default": ["\uf026", "\uf027", "\uf028"] },
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5
     },
     "network": {
         "format-ethernet": "\uf0e8  {ipaddr}",
