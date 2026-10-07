@@ -128,3 +128,13 @@ hl.window_rule({
 
 -- Menu de energia
 hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-power"))
+
+-- Capturas de pantalla
+hl.bind("Print",             hl.dsp.exec_cmd("$HOME/.local/bin/maospy-screenshot full"))
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-screenshot area"))
+
+-- Historial del portapapeles
+hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu --prompt 'Portapapeles > ' | cliphist decode | wl-copy"))
+hl.on("hyprland.start", function ()
+    hl.exec_cmd("wl-paste --watch cliphist store")
+end)
