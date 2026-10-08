@@ -9,12 +9,20 @@
 
     "modules-left":   ["custom/launcher", "ext/workspaces"],
     "modules-center": ["clock"],
-    "modules-right":  ["tray", "pulseaudio", "network", "cpu", "memory", "custom/notification", "custom/power"],
+    "modules-right":  ["tray", "pulseaudio", "bluetooth", "network", "cpu", "memory", "custom/notification", "custom/power"],
 
     "custom/power": {
         "format": "\uf011",
         "tooltip": false,
         "on-click": "~/.local/bin/maospy-power"
+    },
+    "bluetooth": {
+        "format": "\uf293",
+        "format-off": "\uf294",
+        "format-disabled": "\uf294",
+        "format-connected": "\uf293 {num_connections}",
+        "tooltip-format": "{controller_alias}: {status}",
+        "on-click": "blueman-manager"
     },
     "custom/launcher": {
         "format": "\uf303",

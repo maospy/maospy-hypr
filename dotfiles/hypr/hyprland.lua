@@ -138,3 +138,10 @@ hl.bind("SUPER + CTRL + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu --pr
 hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --watch cliphist store")
 end)
+
+-- Blueman flotante
+hl.window_rule({
+    name  = "blueman-float",
+    match = { class = ".*blueman-manager.*" },
+    float = true,
+})
