@@ -1,0 +1,12 @@
+# Herramientas base (archinstall ya instala el kernel, base, bootloader, etc.)
+base-devel
+git
+nano
+openssh
+pciutils
+usbutils
+networkmanager
+xdg-user-dirs
+fastfetch
+btop
+htop

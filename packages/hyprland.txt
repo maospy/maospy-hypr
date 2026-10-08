@@ -1,0 +1,39 @@
+# Escritorio Hyprland
+hyprland
+hyprlock
+hypridle
+hyprpolkitagent
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+qt5-wayland
+qt6-wayland
+waybar
+fuzzel
+swaync
+nwg-dock-hyprland
+awww
+kitty
+dolphin
+sddm
+
+# Capturas y portapapeles
+grim
+slurp
+wl-clipboard
+cliphist
+libnotify
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+gst-plugin-pipewire
+libpulse
+pavucontrol
+
+# Bluetooth
+bluez
+bluez-utils
+blueman

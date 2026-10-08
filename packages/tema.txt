@@ -1,0 +1,10 @@
+# Fuentes y temas
+noto-fonts
+noto-fonts-emoji
+ttf-jetbrains-mono-nerd
+ttf-liberation
+gnome-themes-extra
+dconf
+breeze
+breeze-icons
+qt6ct

@@ -1,0 +1,2 @@
+# Paquetes del AUR del escritorio
+waypaper
