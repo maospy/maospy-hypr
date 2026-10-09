@@ -2,7 +2,7 @@
 
 Escritorio **Hyprland** estilo Omarchy, con colores **Nord**, sobre **Arch Linux minimal**.
 
-![maospy-hypr](wallpapers/maospy-nord.png)
+![maospy-hypr](assets/escritorio.png)
 
 ## Qué incluye
 
@@ -57,6 +57,8 @@ Las configuraciones que ya tengas en `~/.config` se respaldan en `~/.config/maos
 | Super + M | Cerrar sesión |
 
 ## Temas
+
+![Menú de atajos con el tema Tokyo Night](assets/atajos.png)
 
 Con **Super + Shift + T** se abre el menú de temas. También desde la terminal:
 
