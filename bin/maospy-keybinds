@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+fuzzel --dmenu --prompt "Atajos > " --lines 20 --width 62 < "$HOME/.local/share/maospy/keybinds.txt" > /dev/null

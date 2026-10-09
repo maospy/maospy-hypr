@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# ==========================================================
+#  maospy-theme :: cambia la paleta de todo el escritorio
+#  Uso:  maospy-theme            -> menú para elegir (Fuzzel)
+#        maospy-theme everforest -> aplica esa paleta
+#        maospy-theme --lista    -> muestra las paletas
+# ==========================================================
+set -uo pipefail
+
+DATA="$HOME/.local/share/maospy"
+THEMES="$DATA/themes"
+TPL="$DATA/templates"
+CFG="$HOME/.config"
+
+hex2rgb() { printf "%d, %d, %d" "0x${1:0:2}" "0x${1:2:2}" "0x${1:4:2}"; }
+
+if [[ "${1:-}" == "--lista" ]]; then
+    for f in "$THEMES"/*.sh; do basename "$f" .sh; done
+    exit 0
+fi
+
+theme="${1:-}"
+if [[ -z "$theme" ]]; then
+    # Menú: muestra el nombre de cada paleta y devuelve el archivo elegido
+    choice=$(for f in "$THEMES"/*.sh; do
+                 n=$(grep -m1 '^NAME=' "$f" | cut -d'"' -f2)
+                 echo "$n|$(basename "$f" .sh)"
+             done | cut -d'|' -f1 | fuzzel --dmenu --prompt "Tema > " --lines 7 --width 26) || exit 0
+    [[ -z "$choice" ]] && exit 0
+    theme=$(grep -l "^NAME=\"$choice\"" "$THEMES"/*.sh | head -1 | xargs -r basename -s .sh)
+fi
+
+file="$THEMES/$theme.sh"
+[[ -f "$file" ]] || { echo "Tema '$theme' no existe. Disponibles:"; "$0" --lista; exit 1; }
+# shellcheck disable=SC1090
+source "$file"
+
+WALLPATH="$HOME/Wallpapers/$WALLPAPER"
+
+# Renderiza una plantilla reemplazando @VARIABLE@ por los colores del tema
+render() {
+    local src="$TPL/$1" dest="$2"
+    mkdir -p "$(dirname "$dest")"
+    sed -e "s|@NAME@|$NAME|g" \
+        -e "s|@WALLPATH@|$WALLPATH|g" \
+        -e "s|@BG_RGB@|$(hex2rgb "$BG")|g" \
+        -e "s|@FG_RGB@|$(hex2rgb "$FG")|g" \
+        -e "s|@FG2_RGB@|$(hex2rgb "$FG2")|g" \
+        -e "s|@ACCENT_RGB@|$(hex2rgb "$ACCENT")|g" \
+        -e "s|@YELLOW_RGB@|$(hex2rgb "$YELLOW")|g" \
+        -e "s|@RED_RGB@|$(hex2rgb "$RED")|g" \
+        -e "s|@BG@|$BG|g" -e "s|@BG2@|$BG2|g" -e "s|@BG3@|$BG3|g" \
+        -e "s|@FG@|$FG|g" -e "s|@FG2@|$FG2|g" \
+        -e "s|@ACCENT@|$ACCENT|g" -e "s|@ACCENT2@|$ACCENT2|g" \
+        -e "s|@RED@|$RED|g" -e "s|@ORANGE@|$ORANGE|g" -e "s|@YELLOW@|$YELLOW|g" \
+        -e "s|@GREEN@|$GREEN|g" -e "s|@PURPLE@|$PURPLE|g" -e "s|@BLUE@|$BLUE|g" \
+        "$src" > "$dest"
+}
+
+render waybar-style.css "$CFG/waybar/style.css"
+render dock-style.css   "$CFG/nwg-dock-hyprland/style.css"
+render fuzzel.ini       "$CFG/fuzzel/fuzzel.ini"
+render hypr-colors.lua  "$CFG/hypr/colors.lua"
+render hyprlock.conf    "$CFG/hypr/hyprlock.conf"
+
+mkdir -p "$CFG/maospy"
+echo "$theme" > "$CFG/maospy/theme"
+
+# Si no estamos dentro de Hyprland (por ej. desde el instalador), solo se generan los archivos
+[[ -z "${WAYLAND_DISPLAY:-}" ]] && { echo "Tema $NAME generado."; exit 0; }
+
+# Aplicar en vivo
+if [[ -f "$WALLPATH" ]]; then
+    waypaper --wallpaper "$WALLPATH" --backend awww &>/dev/null || awww img "$WALLPATH" &>/dev/null
+fi
+pkill -SIGUSR2 waybar
+pkill -f nwg-dock-hyprland
+setsid -f nwg-dock-hyprland -r -x -i 40 -mb 8 -c fuzzel &>/dev/null
+hyprctl reload &>/dev/null
+command -v kitty >/dev/null && kitty +kitten themes --reload-in=all "$KITTY_THEME" &>/dev/null &
+
+notify-send "Tema maospy" "Aplicado: $NAME"

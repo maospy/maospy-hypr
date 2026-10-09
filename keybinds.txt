@@ -1,0 +1,20 @@
+Super + Enter             →  Terminal
+Super + Espacio           →  Launcher de aplicaciones
+Super + Q                 →  Cerrar ventana
+Super + V                 →  Ventana flotante / fija
+Super + T                 →  Cambiar división horizontal / vertical
+Super + 1 … 0             →  Ir al escritorio
+Super + Shift + 1 … 0     →  Mover ventana a otro escritorio
+Super + H J K L / flechas →  Mover el foco entre ventanas
+Super + clic izquierdo    →  Arrastrar ventana
+Super + clic derecho      →  Cambiar tamaño de ventana
+Super + rueda del mouse   →  Pasar de escritorio
+Super + W                 →  Elegir wallpaper
+Super + Shift + T         →  Cambiar tema de colores
+Super + N                 →  Panel de notificaciones
+Super + Esc               →  Menú de energía
+Super + M                 →  Cerrar sesión
+Impr Pant                 →  Captura de pantalla completa
+Super + Shift + S         →  Captura de una zona
+Super + Ctrl + V          →  Historial del portapapeles
+Super + F1                →  Este menú de atajos

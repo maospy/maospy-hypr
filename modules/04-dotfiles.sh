@@ -27,4 +27,10 @@ if ! grep -q '.local/bin' "$HOME/.bashrc" 2>/dev/null; then
 fi
 export PATH="$HOME/.local/bin:$PATH"
 
+info "Instalando temas maospy (paletas de colores)"
+mkdir -p "$HOME/.local/share/maospy"
+cp -r "$REPO_DIR/themes" "$REPO_DIR/templates" "$HOME/.local/share/maospy/"
+cp "$REPO_DIR/keybinds.txt" "$HOME/.local/share/maospy/"
+"$HOME/.local/bin/maospy-theme" nord
+
 ok "Configuraciones copiadas"

@@ -9,7 +9,8 @@ Escritorio **Hyprland** estilo Omarchy, con colores **Nord**, sobre **Arch Linux
 - **Hyprland** (configuración Lua, atajos estilo Omarchy, teclado latam)
 - **Waybar** Nord: escritorios, reloj en español, volumen, Bluetooth, red, CPU, RAM, notificaciones y botón de energía
 - **Dock** fijo (nwg-dock-hyprland) y **launcher** Fuzzel
-- **Wallpapers** con awww + Waypaper, en 7 paletas (Nord, Catppuccin, Dracula, Everforest, Gruvbox, Rosé Pine, Tokyo Night)
+- **Temas de color**: 7 paletas (Nord, Catppuccin, Dracula, Everforest, Gruvbox, Rosé Pine, Tokyo Night). Al cambiar de tema cambian juntos el wallpaper, Waybar, el dock, Fuzzel, los bordes de las ventanas, la pantalla de bloqueo y Kitty
+- **Wallpapers** con awww + Waypaper
 - **Login SDDM** con tema propio maospy
 - **Bloqueo** de pantalla (hyprlock), bloqueo automático (hypridle) y **menú de energía**
 - **Capturas** de pantalla e **historial del portapapeles**
@@ -46,12 +47,26 @@ Las configuraciones que ya tengas en `~/.config` se respaldan en `~/.config/maos
 | Super + H/J/K/L o flechas | Mover el foco |
 | Super + V | Ventana flotante |
 | Super + W | Elegir wallpaper |
+| Super + Shift + T | Cambiar tema de colores |
+| Super + F1 | Menú de atajos de teclado |
 | Super + N | Panel de notificaciones |
 | Super + Esc | Menú de energía |
 | Impr Pant | Captura de pantalla completa |
 | Super + Shift + S | Captura de una zona |
 | Super + Ctrl + V | Historial del portapapeles |
 | Super + M | Cerrar sesión |
+
+## Temas
+
+Con **Super + Shift + T** se abre el menú de temas. También desde la terminal:
+
+```bash
+maospy-theme             # menú
+maospy-theme everforest  # aplicar uno directo
+maospy-theme --lista     # ver los disponibles
+```
+
+Para crear un tema nuevo, copiá un archivo de `themes/` a `~/.local/share/maospy/themes/`, cambiá los colores y el wallpaper, y aparece solo en el menú.
 
 ## Notas
 

@@ -1,0 +1,20 @@
+window {
+    background-color: rgba(@BG_RGB@, 0.88);
+    border-radius: 14px;
+    border: 1px solid rgba(@ACCENT_RGB@, 0.35);
+}
+#box { padding: 6px 8px; }
+button, image {
+    background: none;
+    border-style: none;
+    box-shadow: none;
+    color: #@FG2@;
+}
+button {
+    padding: 4px;
+    margin: 0 3px;
+    border-radius: 10px;
+}
+button:hover { background-color: rgba(@ACCENT_RGB@, 0.25); }
+button:focus { box-shadow: none; }
+#active { border-bottom: 2px solid #@ACCENT@; }

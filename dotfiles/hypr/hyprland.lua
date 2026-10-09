@@ -1,3 +1,4 @@
+local C = require("colors")
 -- ==========================================
 --  maospy-rice :: hyprland.lua  v0.1
 -- ==========================================
@@ -32,8 +33,8 @@ hl.config({
         gaps_out = 10,
         border_size = 2,
         col = {
-            active_border   = { colors = {"rgba(88c0d0ee)", "rgba(81a1c1ee)"}, angle = 45 },
-            inactive_border = "rgba(4c566aaa)",
+            active_border   = { colors = {C.active1, C.active2}, angle = 45 },
+            inactive_border = C.inactive,
         },
         resize_on_border = true,
         layout = "dwindle",
@@ -145,3 +146,9 @@ hl.window_rule({
     match = { class = ".*blueman-manager.*" },
     float = true,
 })
+
+-- Menu de temas
+hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-theme"))
+
+-- Menu de atajos
+hl.bind("SUPER + F1", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-keybinds"))
