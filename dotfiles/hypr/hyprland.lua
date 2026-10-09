@@ -152,3 +152,7 @@ hl.bind("SUPER + SHIFT + T", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-theme"))
 
 -- Menu de atajos
 hl.bind("SUPER + F1", hl.dsp.exec_cmd("$HOME/.local/bin/maospy-keybinds"))
+
+-- Pantalla completa y maximizar
+hl.bind("SUPER + F",         hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind("SUPER + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized",  action = "toggle" }))

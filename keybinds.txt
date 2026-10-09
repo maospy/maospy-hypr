@@ -2,6 +2,8 @@ Super + Enter             →  Terminal
 Super + Espacio           →  Launcher de aplicaciones
 Super + Q                 →  Cerrar ventana
 Super + V                 →  Ventana flotante / fija
+Super + F                 →  Pantalla completa
+Super + Shift + F         →  Maximizar (deja ver la barra)
 Super + T                 →  Cambiar división horizontal / vertical
 Super + 1 … 0             →  Ir al escritorio
 Super + Shift + 1 … 0     →  Mover ventana a otro escritorio
